@@ -2,7 +2,7 @@
 Midterm
 -----------------------------------------------------------------
 
-git clone https://github.com/PeopleNTech2/midterm-coding-exam.git
+git clone https://github.com/sofiane1489/midterm-exam.git
 
 -----------------------------------------------------------------
 

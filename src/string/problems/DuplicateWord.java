@@ -1,7 +1,9 @@
 package string.problems;
 
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
 public class DuplicateWord {
-
     public static void main(String[] args) {
         /*
          * Write a java program to find the duplicate words and their number of occurrences in the string.
@@ -9,6 +11,7 @@ public class DuplicateWord {
          */
 
         String st = "Java is a programming Language. Java is also an Island of Indonesia. Java is widely used language";
+
 
     }
 
