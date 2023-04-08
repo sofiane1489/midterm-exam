@@ -32,21 +32,11 @@ public class UseArrayList {
 			System.out.print(i+" ");
 		}System.out.println();
 
-		//retrieve elements with while loop
-		int i=0;
-		while(i<numbers.size())
-		{
-			System.out.print(numbers.get(i)+" ");
-			i++;
-		}System.out.println();
-
-       //retrieve elements with an iterator
+       //retrieve elements using wile loop with an iterator
 		Iterator so=numbers.iterator();
 		while(so.hasNext()){
 			System.out.print(so.next()+" ");}
 		System.out.println();
-
-
 
 	}
 

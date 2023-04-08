@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class DataReader {
 
@@ -24,17 +26,79 @@ public class DataReader {
 		 */
 
 		String textFile = System.getProperty("user.dir") + "/src/data/self-driving-car.txt";
+		String store="";
+		FileReader fr= null;
+		try {
+			fr = new FileReader("C:\\Users\\sehso\\eclipse-workspace\\midterm-coding-exam\\src\\data\\self-driving-car");
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		}
 
-		FileReader fr=new FileReader("C:\\Users\\sehso\\eclipse-workspace\\midterm-coding-exam\\src\\data\\self-driving-car");
 		BufferedReader br=new BufferedReader(fr);
 		String line=null;
-		while((line =br.readLine())!=null)
-		{
-			System.out.println(line);
+
+		try {
+			while((line=br.readLine())!=null){
+				store=store+line;
+				System.out.println(line);
+			}
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
-		br.close();
-		fr.close();
+		finally {
+			try {
+				fr.close();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+			try {
+				br.close();
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+
+		}
+
+		String[] storeArray = store.split(" ");
+		// create empty stack and list
+
+		Stack<String> stack = new Stack<String>();
+
+		LinkedList<String> list = new LinkedList<String>();
+
+// store each word to stack and list
+
+		for (String element : storeArray) {
+
+// as specified in question stack add, push to add element
+
+			list.add(element);
+
+			stack.push(element);
+			System.out.println(element);
+
+		}
+
+// retrieve FIFO order form linked list
+
+		System.out.println("LinkedList FIFO : ");
+
+		while (list.isEmpty()==false)
+			System.out.print (list.remove() + " ");
+		        System.out.println();
+
+// since stack if LIFO
+
+		System.out.println("Stack FILO : ");
+		while (stack.isEmpty()==false) {
+
+			System.out.print(stack.pop() + " ");
+
+		}
 
 	}
 
 }
+
+
