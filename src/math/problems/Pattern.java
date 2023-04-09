@@ -1,5 +1,5 @@
 package math.problems;
-
+import java.util.HashMap;
 public class Pattern {
 
 	public static void main(String[] args) {
@@ -8,7 +8,11 @@ public class Pattern {
 		 *
 		 *
 		 */
-		
+
+		for(int i = 100; i >= 0; i--) {
+			System.out.print(String.valueOf(i) + " ");
+		}
+		System.out.println();
 
 
 	}

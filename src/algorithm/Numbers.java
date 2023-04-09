@@ -1,10 +1,9 @@
 package algorithm;
-
 import databases.ConnectToSqlDB;
-
 import java.util.List;
 import java.util.Random;
-
+import java.time.Duration;
+import java.time.Instant;
 public class Numbers {
 
 	/*
@@ -18,7 +17,7 @@ public class Numbers {
 	 */
 
 	public static void main(String[] args) throws Exception {
-		
+
 		int [] num = new int[1000000];
 		storeRandomNumbers(num);
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
@@ -27,9 +26,9 @@ public class Numbers {
 		algo.selectionSort(num);
 		long selectionSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " milli sec");
-        connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
-        List<String> numbers = connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
-        printValue(numbers);
+		connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
+		List<String> numbers = connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
+		printValue(numbers);
 		int n = num.length;
 		randomize (num, n);
 		//Insertion Sort
@@ -48,6 +47,7 @@ public class Numbers {
 
 
 		//Come to conclusion about which Sorting Algo is better in given data set.
+
 
 	}
 

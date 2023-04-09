@@ -1,5 +1,7 @@
 package math.problems;
 
+import org.junit.Assert;
+
 public class Fibonacci {
     public static void main(String[] args) {
          /*
@@ -10,11 +12,12 @@ public class Fibonacci {
         fibonacci[0]=0;
         fibonacci[1]=1;
       for(int i=2;i<40;i++)
-       {
+         {
            fibonacci[i]=fibonacci[i-1]+fibonacci[i-2];
           }
-      for(int i:fibonacci)
+       for(int i:fibonacci)
           System.out.println(i);
+
 
       }
     }

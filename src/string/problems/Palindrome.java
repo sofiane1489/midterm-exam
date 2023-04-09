@@ -20,10 +20,10 @@ public class Palindrome {
         else
             System.out.println("it is not ");
 
-        //unit test (test data="dos")
+        /*.......................unit test (test data="dos")............................*/
         boolean expected=false;
         Assert.assertEquals(expected,a.equalsIgnoreCase(b));
 
     }
-    }
+}
 

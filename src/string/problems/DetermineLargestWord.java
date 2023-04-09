@@ -17,7 +17,8 @@ public class DetermineLargestWord {
         for (String word : wordNLength.values()) {
             s = word.length() + " " + word;
         }
-        //unit test(test data=Human brain is a biological learning machine)
+        /*....................................unit test...........................................*/
+        /* ................................test data= string s...................................*/
         String expected="10 biological";
         Assert.assertEquals(expected,s);
 
