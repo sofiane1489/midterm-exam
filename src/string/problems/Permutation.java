@@ -2,44 +2,56 @@ package string.problems;
 
 import org.junit.Assert;
 
-import java.util.Scanner;
+import java.util.*;
+
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 public class Permutation {
+    public static List<String> generatePermutations(String input) {
+        List<String> result = new ArrayList<>();
+        if (input == null || input.length() == 0) {
+            return result;
+        }
 
-    public static void main(String[] args) {
-
-        /*
-         * Permutation of String "ABC" is "ABC" "BAC" "BCA" "ACB" "CAB" "CBA".
-         * Write Java program to compute all Permutation of a String
-         *
-         */
-
-        Scanner sc= new Scanner(System.in); //System.in is a standard input stream
-        System.out.print("Enter a string: ");
-        String str= sc.nextLine();
-        System.out.println("The permutation of the given string are :");
-       find_permutations(str, "");
-
-        /* .............................unit testing....................................*/
-        //test data=abc
-        String expected="abc acb bac bca cab cba";
-
+        generatePermutationsHelper(input, "", result);
+        return result;
     }
-   public static void find_permutations(String str,String res){
-        if (str.length() == 0)
-          {
-            System.out.print(res + " ");
-            //return;
-            }
-        boolean flag[] = new boolean[55];
-        for (int i = 0; i < str.length(); i++){
-            char ch = str.charAt(i);
-            String rem_str = str.substring(0, i) + str.substring(i + 1);
-            if (flag[ch - 'A'] == false)
-                find_permutations(rem_str, res + ch);
-                flag[ch - 'A'] = true;
-            find_permutations(rem_str, res + ch);
-            return ;
+
+    private static void generatePermutationsHelper(String input, String current, List<String> result) {
+        if (input.isEmpty()) {
+            result.add(current);
+            return;
+        }
+
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            String remaining = input.substring(0, i) + input.substring(i + 1);
+            generatePermutationsHelper(remaining, current + ch, result);
         }
     }
+
+    public static void main(String[] args) {
+        String input = "ABC";
+        List<String> permutations = generatePermutations(input);
+        System.out.println("Permutations of " + input + ": " + permutations);
+
+        /*..................................apply unit testing.................................... */
+        /*..................................test data=ABC...........................................*/
+        //We can create an array this way as below in order to compare it to the actual result
+//        ArrayList<String> expected = new ArrayList();
+//        expected.add("ABC");
+//        expected.add("ACB");
+//        expected.add("BAC");
+//        expected.add("BCA");
+//        expected.add("CAB");
+//        expected.add("CBA");
+
+        //or we can create an array as this way below
+        List<String> expectedPermutations = Arrays.asList("ABC", "ACB", "BAC", "BCA", "CAB", "CBA");
+        Assert.assertEquals(expectedPermutations,permutations);
+
+    }
+
 }

@@ -42,6 +42,7 @@ public class DataReader {
 				store=store+line;
 				System.out.println(line);
 			}
+			System.out.println();
 
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -76,7 +77,7 @@ public class DataReader {
 			list.add(element);
 
 			stack.push(element);
-			System.out.println(element);
+
 
 		}
 

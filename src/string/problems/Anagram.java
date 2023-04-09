@@ -16,7 +16,8 @@ public class Anagram {
         System.out.print("Enter second String: ");
         String str2 = input.nextLine();
 
-        if(str1.length() == str2.length()) {
+        if(str1.length() == str2.length())
+        {
 
             char[] charArray1 = str1.toCharArray();
             char[] charArray2 = str2.toCharArray();
@@ -24,11 +25,8 @@ public class Anagram {
             Arrays.sort(charArray1);
             Arrays.sort(charArray2);
 
-            boolean result = Arrays.equals(charArray1, charArray2);
+       boolean result = Arrays.equals(charArray1, charArray2);
 
-            //unit testing (test data=arc,act)
-            boolean expected=false;
-            Assert.assertEquals(expected,result);
 
             if(result) {
                 System.out.println(str1 + " and " + str2 + " are anagram.");
@@ -36,12 +34,17 @@ public class Anagram {
             else {
                 System.out.println(str1 + " and " + str2 + " are not anagram.");
             }
+
+ /*.................................Apply unit testing......................................*/
+ /*..................................test data="ARC","CAT"......................................*/
+            boolean expected=false;
+            Assert.assertEquals(expected,result);
+
         }
+
         else {
             System.out.println(str1 + " and " + str2 + " are not anagram.");
         }
-
-
 
     }
 }

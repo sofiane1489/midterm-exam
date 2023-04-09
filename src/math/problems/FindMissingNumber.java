@@ -1,17 +1,21 @@
 package math.problems;
 
+import org.junit.Assert;
+
 public class FindMissingNumber {
 
-    public static void missingNumber(int[] arr,int n){
+    public static int missingNumber(int[] arr,int n){
       int sumExpectedResult=0;
       int actualResult=0;
-
+     int missing=0;
       for(int i=1;i<=n;i++)
           sumExpectedResult=sumExpectedResult+i;
 
          for(int i=0;i<n-1;i++)
              actualResult=actualResult+arr[i];
-        System.out.println("the missing number is: "+(sumExpectedResult-actualResult));
+         missing=(sumExpectedResult-actualResult);
+
+        return missing;
     }
 
     public static void main(String[] args) {
@@ -22,13 +26,14 @@ public class FindMissingNumber {
          */
          int [] array = new int[]{10, 2, 1, 4, 5, 3, 7, 8, 6};
          int n=10;
+         int arr=missingNumber(array,10);
+         System.out.println("the missing number is: "+missingNumber(array,10));
 
-         missingNumber(array,10);
+         /*......................................unit testing..................................................*/
+         /*...................................test data:array={10, 2, 9, 4, 5, 3, 7, 8, 6}....................*/
 
-         //apply unit testing
-         //test data=11
-        int expectedResult;
-
+            int expectedMissingNumber=1;
+            Assert.assertEquals(expectedMissingNumber,arr);
 
     }
 }

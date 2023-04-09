@@ -47,10 +47,11 @@ public class PrimeNumber {
 		}System.out.println(arrList);
 		System.out.println(numberOfPrimes);
 
-		//unit test
-		// test data=4
-		boolean expectedCheck=false;
-		Assert.assertEquals(expectedCheck,checkPrime(4));
+/*.........................................unit test.................................................*/
+/* .......................................test data=number 4..................................................*/
+		       boolean expectedCheck=false;
+		       Assert.assertEquals(expectedCheck,checkPrime(4));
+
 
 		try
 		{
@@ -63,7 +64,7 @@ public class PrimeNumber {
 				}
 			}
 			writer.close();
-			System.out.println("Data successfully wrote to the file!");
+			System.out.println("successed");
 		} catch (IOException e) {
 			System.out.println("An error occurred.");
 			e.printStackTrace();

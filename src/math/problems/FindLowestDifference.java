@@ -1,5 +1,7 @@
 package math.problems;
 
+import org.junit.Assert;
+
 import java.util.Arrays;
 
 public class FindLowestDifference {
@@ -35,9 +37,10 @@ public class FindLowestDifference {
 
         System.out.println("Lowest Difference = " + res);
 
-        //......................................unit testing.........................................
-        //......................................test data= ..........................................
-
+        //...........................................unit testing.........................................
+        //......................................test data=array1,array2 ...................................
+          int expLowestDiffrence=1;
+          Assert.assertEquals(expLowestDiffrence,res);
 
     }
 

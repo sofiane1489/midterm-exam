@@ -1,6 +1,7 @@
 package math.problems;
 
 import databases.ConnectToSqlDB;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,14 @@ public class LowestNumber {
 				lowestNumber = array[i];
 		}
 		System.out.println("the lowest number in the array is:"+lowestNumber);
+
+		/*................................Apply unit testing..........................................*/
+		/*..................................test data=array[]...........................................*/
+		     int expectedResult=5;
+		     Assert.assertEquals(expectedResult,lowestNumber);
+
+
+
 
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 		List<String> lowestValue = new ArrayList<String>();
