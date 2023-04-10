@@ -2,7 +2,7 @@ package design;
 
 import java.util.Scanner;
 
-public class EmployeeInfo {
+public class EmployeeInfo extends AbstractEmployee{
 	
  /*This class can be implemented from Employee interface then add additional methods in EmployeeInfo class.
  * Also, Employee interface can be implemented into an abstract class.So create an Abstract class
@@ -20,6 +20,11 @@ public class EmployeeInfo {
 	/*
 	 * declare few static and final fields and some non-static fields
 	 */
+
+	public static final int BEST_PERFORMANCE = 10;
+	public static final int AVERAGE_PERFORMANCE = 5;
+	public static final int WORST_PERFORMANCE = 2;
+
 	static String companyName;
 	
 	/*
@@ -33,10 +38,19 @@ public class EmployeeInfo {
 	 * Must implement below constructor.
 	 */
 	public EmployeeInfo(int employeeId){
-		
+		super(employeeId);
 	}
-    public EmployeeInfo(String name, int employeeId){
-		
+	public EmployeeInfo(String name, int employeeId){
+		super(name, employeeId);
+	}
+	public EmployeeInfo(String name, int employeeId, int benifits, int salary) {
+		super(name, employeeId);
+		this.benifits = benifits;
+		this.salary = salary;
+	}
+
+	public EmployeeInfo() {
+		super();
 	}
 	
 	/*
@@ -47,18 +61,30 @@ public class EmployeeInfo {
 	 * So you probably need to send 2 arguments.
 	 * 
 	 */
-	public static int calculateEmployeeBonus(int numberOfYearsWithCompany){
-		int total=0;
-		return total;
+	public int calculateEmployeeBonus(int numberOfYearsWithCompany) {
+		int bonusPercentage = 0;
+		if (numberOfYearsWithCompany > 10) {
+			bonusPercentage = BEST_PERFORMANCE;
+		} else if (numberOfYearsWithCompany > 8) {
+			bonusPercentage = AVERAGE_PERFORMANCE;
+		} else {
+			bonusPercentage = WORST_PERFORMANCE;
+		}
+
+		int bonus = (int) (salary * bonusPercentage / 100.0);
+		int yearlyBonus = bonus * 12;
+
+		return yearlyBonus;
 	}
-	
+
+
 	/*
 	 * This methods should calculate Employee Pension based on salary and numbers of years with the company.
 	 * Then it will return the total pension. So you need to implement the logic.
 	 * Hints: pension will be 5% of the salary for 1 year, 10% for 2 years with the company and so on.
 	 * 
 	 */
-	public static int calculateEmployeePension(){
+	public  int calculateEmployeePension(){
 		int total=0;
 		Scanner sc  = new Scanner(System.in);
 		System.out.println("Please enter start date in format (example: May,2015): ");
@@ -75,6 +101,27 @@ public class EmployeeInfo {
 
 		return total;
 	}
+
+	public int employeeId() {
+		return 0;
+	}
+
+	public String employeeName() {
+		return null;
+	}
+
+	public void assignDepartment() {
+
+	}
+
+	public void benefitLayout() {
+
+	}
+
+	public int calculateEmployeeBonus() {
+		return 0;
+	}
+
 	private static class DateConversion {
 
 		public DateConversion(Months months){}
