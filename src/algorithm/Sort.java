@@ -1,17 +1,49 @@
 package algorithm;
 
+import databases.ConnectToSqlDB;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Sort {
 
-    long executionTime = 0;
+   static long  executionTime = 0;
     /*
      * Please implement all the sorting algorithm. Feel free to add helper methods.
      * Store all the sorted data into one of the databases.
      */
 
 
-    public int[] selectionSort(int [] array){
+    public  int[] selectionSort(int[] array){
         final long startTime = System.currentTimeMillis();
         int [] list = array;
+
+        int n = array.length;
+// Loop to increase the boundary of the sorted array
+        for (int i = 0; i < n-1; i++)
+        {
+// Finding the smallest element in the unsorted array
+            int min_element = i;
+            for (int j = i+1; j < n; j++)
+                if (array[j] < array[min_element])
+                    min_element = j;
+            /* Swap the smallest element from the unsorted array with the last element of the sorted array */
+            int temp = array[min_element];
+            array[min_element] = array[i];
+            array[i] = temp;
+        }
+
+
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
+        return list;
+    }
+
+    public static int[] insertionSort(int[] array){
+        final long startTime = System.currentTimeMillis();
+        int [] list = array;
+        //implement here
 
         for(int j=0; j<array.length-1; j++){
             int min = j;
@@ -25,35 +57,13 @@ public class Sort {
             array[j] = temp;
         }
 
-        final long endTime = System.currentTimeMillis();
-        final long executionTime = endTime - startTime;
-        this.executionTime = executionTime;
+//        final long endTime = System.currentTimeMillis();
+//        final long executionTime = endTime - startTime;
+//        this.executionTime = executionTime;
         return list;
     }
 
-    public int[] insertionSort(int [] array){
-        final long startTime = System.currentTimeMillis();
-        int [] list = array;
-        //implement here
-
-        for(int j=1;j<array.length-1;j++){
-            int curr= j;
-            while(j>0 && curr<array[j-1]){
-                array[j]=array[j-1];
-                j--;
-            }
-            array[j]=curr;
-        }
-
-
-
-        final long endTime = System.currentTimeMillis();
-        final long executionTime = endTime - startTime;
-        this.executionTime = executionTime;
-        return list;
-    }
-
-    public int[] bubbleSort(int [] array){
+    public static int[] bubbleSort(int [] array){
         int [] list = array;
         //implement here
         // length of list
@@ -78,7 +88,7 @@ public class Sort {
     }
 
 
-    public int [] mergeSort(int [] array){
+    public static int [] mergeSort(int [] array){
         int [] list = array;
         //implement here
         if(list == null)
@@ -173,7 +183,7 @@ public class Sort {
         return i + 1;
     }
 
-    public int [] quickSort(int [] array){
+    public static int [] quickSort(int [] array){
         int [] list = array;
         //implement here
         // fetching length, lower limit and upper limit of index
@@ -245,7 +255,6 @@ public class Sort {
             }
         }
     }
-
     public static int [] heapSort(int[] array){
         int [] list = array;
 
@@ -317,13 +326,12 @@ public class Sort {
 
     public static void printSortedArray(int [] array){
         for(int i=0; i<array.length; i++){
-            System.out.println(array[i]);
+            System.out.print(array[i]+" ");
         }
     }
 
     // Driver program
-    public static void main(String args[])
-    {
+    public static void main(String args[]) throws Exception {
         int arr[] = {10, 20, 15, 17, 9, 21};
         int n = arr.length;
 
@@ -331,8 +339,39 @@ public class Sort {
         printSortedArray(arr);
 
         heapSort(arr);
-
-        System.out.print("Sorted array: ");
+        System.out.print("\nSorted array with heapSort: ");
         printSortedArray(arr);
+
+//        buildMaxHeap(arr);
+//        System.out.print("\nSorted array with buildMaxHeap: ");
+//        printSortedArray(arr);
+
+        quickSort(arr);
+        System.out.print("\nSorted array with quickSort: ");
+        printSortedArray(arr);
+
+        mergeSort(arr);
+        System.out.print("\nSorted array with mergeSort: ");
+        printSortedArray(arr);
+
+        bubbleSort(arr);
+        System.out.print("\nSorted array with bubbleSort: ");
+        printSortedArray(arr);
+
+        insertionSort(arr);
+        System.out.print("\nSorted array with insertionSort: ");
+        printSortedArray(arr);
+
+//        selectionSort(arr);
+//        System.out.print("\nSorted array with selectionSort: ");
+//        printSortedArray(arr);
+
+
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
+        List<String> sorting = new ArrayList<String>();
+        connectToSqlDB.insertDataFromArrayToSqlTable(arr, "sorting_algorithm", "type");
+        sorting = connectToSqlDB.readDataBase("sorting_algorithm", "type");
+
     }
+
 }

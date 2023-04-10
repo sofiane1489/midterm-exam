@@ -1,5 +1,4 @@
 package math.problems;
-
 import org.junit.Assert;
 
 public class Factorial {
@@ -27,16 +26,15 @@ public class Factorial {
          */
 
         // find Factorial of a given number using Recursion
-          int result1 =factorial(5);
-          System.out.println("the factorial of 5 is: "+result1);
+          int result =factorial(5);
+          System.out.println("the factorial of 5 is: "+result);
 
-          int result2=facto(5);
-        System.out.println("the factorial of 5 is: "+result2);
+
 
         //.............................unit testing..................................................
         //..............................test data=factorial of 6!...................................................
         int expectedresult1=720;
-        Assert.assertEquals(expectedresult1,result1);
+        Assert.assertEquals(expectedresult1,result);
 
        }
 }

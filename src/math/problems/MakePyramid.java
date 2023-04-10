@@ -20,7 +20,7 @@ public class MakePyramid {
         return pyramid.toString();
     }
     public static void testBuildPyramid() {
-        int height = 9;
+        int height = 7;
         String act;
         String expectedOutput =
                 "     * \n" +

@@ -8,10 +8,10 @@ import java.time.Duration;
 import java.time.Instant;
 public class Numbers {
 
-	private long startTime,stopTime;
-	public long executionTime;
+	private static long startTime,stopTime;
+	public static long executionTime;
 	//--------------------
-	public void selectionSort(int num[]){
+	public static void selectionSort(int[] num){
 		startTime = System.nanoTime();
 		int N = num.length;
 		for (int i = 0; i < N-1; i++) {
@@ -23,9 +23,11 @@ public class Numbers {
 			int temp = num[min_idx];
 			num[min_idx] = num[i];
 			num[i] = temp;
+
 		}
 		stopTime = System.nanoTime();
 		executionTime=stopTime-startTime;
+
 	}
 	//---------------------
 	public void insertionSort(int num[]){
@@ -82,7 +84,7 @@ public class Numbers {
 		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " nano sec");
 		connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
 		ArrayList<String> numbers = (ArrayList<String>) connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
-//printValue(numbers);
+        //printValue(numbers);
 		int n = num.length;
 		randomize (num, n);
 		//Insertion Sort
@@ -93,14 +95,17 @@ public class Numbers {
 		//By following above, Continue for rest of the Sorting Algorithm....
 
 		randomize(num, n);
-//bubble Sort
+       //bubble Sort
 		algo.bubbleSort(num);
 		long bubbleSortExecutionTime = algo.executionTime;
 		System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort take: " + bubbleSortExecutionTime + " milli sec");
 
 
 		//Come to conclusion about which Sorting Algo is better in given data set.
-       /*        the selection sorting algo is better in the given data test        */
+
+       /*        the selections Insertion Sort is better in the given data test        */
+
+
 
 	}
 
@@ -123,9 +128,10 @@ public class Numbers {
 			arr[j] = temp;
 		}
 	}
-	public static void printValue(List<String> array){
-		for(String st:array){
+	public static void printValue(List<String> array) {
+		for (String st : array) {
 			System.out.println(st);
 		}
-	}
+
+	}            
 }

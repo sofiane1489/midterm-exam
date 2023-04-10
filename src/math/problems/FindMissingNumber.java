@@ -27,7 +27,7 @@ public class FindMissingNumber {
          int [] array = new int[]{10, 2, 1, 4, 5, 3, 7, 8, 6};
          int n=10;
          int arr=missingNumber(array,10);
-         System.out.println("the missing number is: "+missingNumber(array,10));
+         System.out.println("the missing number is: "+arr);
 
          /*......................................unit testing..................................................*/
          /*...................................test data:array={10, 2, 9, 4, 5, 3, 7, 8, 6}....................*/

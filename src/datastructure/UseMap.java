@@ -1,10 +1,17 @@
 package datastructure;
 
+import databases.ConnectToSqlDB;
+
+import java.io.IOException;
+import java.sql.*;
 import java.util.*;
+
+import static databases.ConnectToSqlDB.connect;
+import static databases.ConnectToSqlDB.statement;
 
 public class UseMap {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		/*
 		 * Demonstrate how to use Map that includes storing and retrieving elements.
 		 * Add List<String> into a Map. Like, Map<String, List<string>> list = new HashMap<String, List<String>>();
@@ -22,7 +29,7 @@ public class UseMap {
 		st.put(06,"VEGAYETH");
 		st.put(35,"BOUMERDES");
 
-		//retrieving elements with for loop
+		//retrieving elements with for each loop
 		 for(String i:st.values())
 			 System.out.println(i);
 		System.out.println();
@@ -53,6 +60,13 @@ public class UseMap {
 
 		list.put("cars",name);
 
+
+		// retrieve the List of Strings from the Map using a for-each loop
+		System.out.println("Using for-each loop:");
+		for (String car : list.get("cars")) {
+			System.out.println(car);
+		}
+
 //  retrieving elements with for each loop
 		for(Map.Entry ca:list.entrySet()) {
 			System.out.println("key:" + ca.getKey()+", values:"+ca.getValue());
@@ -65,6 +79,15 @@ public class UseMap {
 			System.out.println(It.next());
 		       System.out.println();
 
+			   //Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
+
+		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
+		int[] list1 = new int[10];
+
+		connectToSqlDB.insertDataFromArrayToSqlTable(list1, "Map", "values");
+		ArrayList<String> numbers = (ArrayList<String>) connectToSqlDB.readDataBase("Map", "values");
+		}
+
 	}
 
-}
+
