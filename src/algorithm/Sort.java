@@ -40,7 +40,7 @@ public class Sort {
         return list;
     }
 
-    public static int[] insertionSort(int[] array){
+    public int[] insertionSort(int[] array){
         final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
@@ -57,9 +57,9 @@ public class Sort {
             array[j] = temp;
         }
 
-//        final long endTime = System.currentTimeMillis();
-//        final long executionTime = endTime - startTime;
-//        this.executionTime = executionTime;
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 
@@ -237,13 +237,12 @@ public class Sort {
         int n = array.length;
         for (int i = 1; i < n; i++)
         {
-            // if child is bigger than parent
+
             if (array[i] > array[(i - 1) / 2])
             {
                 int j = i;
 
-                // swap child and parent until
-                // parent is smaller
+
                 while (array[j] > array[(j - 1) / 2])
                 {
                     int temp = array[j];
@@ -266,30 +265,22 @@ public class Sort {
 
         for (int i = n - 1; i > 0; i--)
         {
-            // swap value of first indexed
-            // with last indexed
+
             temp = list[0];
             list[0]=list[i];
             list[i] = temp;
 
 
-            // maintaining heap property
-            // after each swapping
             int j = 0, index;
 
             do
             {
                 index = (2 * j + 1);
 
-                // if left child is smaller than
-                // right child point index variable
-                // to right child
                 if (index < (i - 1) && list[index] < list[index + 1])
                     index++;
 
-                // if parent is smaller than child
-                // then swapping parent with child
-                // having higher value
+
                 if (index < i && list[j] < list[index]){
                     temp = list[j];
                     list[j]=list[index];
@@ -358,19 +349,21 @@ public class Sort {
         System.out.print("\nSorted array with bubbleSort: ");
         printSortedArray(arr);
 
-        insertionSort(arr);
-        System.out.print("\nSorted array with insertionSort: ");
-        printSortedArray(arr);
+//        insertionSort(arr);
+//        System.out.print("\nSorted array with insertionSort: ");
+//        printSortedArray(arr);
 
 //        selectionSort(arr);
 //        System.out.print("\nSorted array with selectionSort: ");
 //        printSortedArray(arr);
 
+        System.out.println();
 
         ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
-        List<String> sorting = new ArrayList<String>();
+         List<String> sorting = new ArrayList<>();
         connectToSqlDB.insertDataFromArrayToSqlTable(arr, "sorting_algorithm", "type");
         sorting = connectToSqlDB.readDataBase("sorting_algorithm", "type");
+
 
     }
 

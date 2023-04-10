@@ -30,7 +30,6 @@ public class LowestNumber {
 
 
 
-
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 		List<String> lowestValue = new ArrayList<String>();
 		try {
