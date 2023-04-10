@@ -1,10 +1,64 @@
 package algorithm;
 import databases.ConnectToSqlDB;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.time.Duration;
 import java.time.Instant;
 public class Numbers {
+
+	private long startTime,stopTime;
+	public long executionTime;
+	//--------------------
+	public void selectionSort(int num[]){
+		startTime = System.nanoTime();
+		int N = num.length;
+		for (int i = 0; i < N-1; i++) {
+			int min_idx = i;
+			for (int j = i+1; j < N; j++){
+				if (num[j] < num[min_idx])
+					min_idx = j;
+			}
+			int temp = num[min_idx];
+			num[min_idx] = num[i];
+			num[i] = temp;
+		}
+		stopTime = System.nanoTime();
+		executionTime=stopTime-startTime;
+	}
+	//---------------------
+	public void insertionSort(int num[]){
+		startTime = System.nanoTime();
+		int n = num.length;
+		for (int i = 1; i < n; ++i) {
+			int k = num[i];
+			int j = i - 1;
+
+			while (j >= 0 && num[j] > k) {
+				num[j + 1] = num[j];
+				j = j - 1;
+			}
+			num[j + 1] = k;
+		}
+		stopTime = System.nanoTime();
+		executionTime=stopTime-startTime;
+	}
+	//------------------------
+	public void bubbleSort(int num[]){
+		startTime = System.nanoTime();
+		int N = num.length;
+		for (int i = 0; i < N-1; i++)
+			for (int j = 0; j < N-i-1; j++)
+				if (num[j] > num[j+1])
+				{
+					int temp = num[j];
+					num[j] = num[j+1];
+					num[j+1] = temp;
+				}
+		stopTime = System.nanoTime();
+		executionTime=stopTime-startTime;
+	}
 
 	/*
 	 * Show all the different kind of sorting algorithm by applying into (num array).
@@ -25,10 +79,10 @@ public class Numbers {
 		Sort algo = new Sort();
 		algo.selectionSort(num);
 		long selectionSortExecutionTime = algo.executionTime;
-		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " milli sec");
+		System.out.println("Total Execution Time of "+ num.length + " numbers in Selection Sort take: " + selectionSortExecutionTime + " nano sec");
 		connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
-		List<String> numbers = connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
-		printValue(numbers);
+		ArrayList<String> numbers = (ArrayList<String>) connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
+//printValue(numbers);
 		int n = num.length;
 		randomize (num, n);
 		//Insertion Sort
@@ -38,16 +92,15 @@ public class Numbers {
 
 		//By following above, Continue for rest of the Sorting Algorithm....
 
-
-
-
-
-
-
+		randomize(num, n);
+//bubble Sort
+		algo.bubbleSort(num);
+		long bubbleSortExecutionTime = algo.executionTime;
+		System.out.println("Total Execution Time of " + num.length + " numbers in Bubble Sort take: " + bubbleSortExecutionTime + " milli sec");
 
 
 		//Come to conclusion about which Sorting Algo is better in given data set.
-
+       /*        the selection sorting algo is better in the given data test        */
 
 	}
 
