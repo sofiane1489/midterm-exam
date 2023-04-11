@@ -20,7 +20,7 @@ public class MakePyramid {
         return pyramid.toString();
     }
     public static void testBuildPyramid() {
-        int height = 7;
+        int height = 9;
         String act;
         String expectedOutput =
                 "     * \n" +
@@ -49,7 +49,7 @@ public class MakePyramid {
 /*........................................Apply unit testing........................................*/
  /*.........................................test data: height=9............................................*/
 
-                    testBuildPyramid();
+                                        testBuildPyramid();
 
         }
   }

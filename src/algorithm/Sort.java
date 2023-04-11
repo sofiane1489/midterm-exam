@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Sort {
 
-   static long  executionTime = 0;
+   long  executionTime = 0;
     /*
      * Please implement all the sorting algorithm. Feel free to add helper methods.
      * Store all the sorted data into one of the databases.
@@ -40,7 +40,7 @@ public class Sort {
         return list;
     }
 
-    public int[] insertionSort(int[] array){
+    public  int[] insertionSort(int[] array){
         final long startTime = System.currentTimeMillis();
         int [] list = array;
         //implement here
@@ -352,7 +352,7 @@ public class Sort {
 //        insertionSort(arr);
 //        System.out.print("\nSorted array with insertionSort: ");
 //        printSortedArray(arr);
-
+//
 //        selectionSort(arr);
 //        System.out.print("\nSorted array with selectionSort: ");
 //        printSortedArray(arr);

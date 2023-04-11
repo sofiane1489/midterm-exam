@@ -28,7 +28,7 @@ public class LowestNumber {
 		     int expectedResult=5;
 		     Assert.assertEquals(expectedResult,lowestNumber);
 
-
+        //Use  databases MySql to store data and retrieve data.
 
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 		List<String> lowestValue = new ArrayList<String>();

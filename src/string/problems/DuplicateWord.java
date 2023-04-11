@@ -70,7 +70,6 @@ public class DuplicateWord {
         Assert.assertEquals(expectedAvgLength,String.format("%4f",averageLengthOfWords(st)));
 
 
-
     }
 
 }

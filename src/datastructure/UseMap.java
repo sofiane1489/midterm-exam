@@ -79,7 +79,7 @@ public class UseMap {
 			System.out.println(It.next());
 		System.out.println();
 
-		//Use any databases[MongoDB, Oracle, MySql] to store data and retrieve data.
+		//Use  databases MySql to store data and retrieve data.
 
 		ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 		int[] list1 = new int[20];
